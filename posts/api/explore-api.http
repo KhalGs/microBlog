@@ -1,0 +1,79 @@
+### Base URL
+http://microbloglite.us-east-2.elasticbeanstalk.com
+
+### Step 1) Register or create new user
+POST http://microbloglite.us-east-2.elasticbeanstalk.com/api/users
+Content-Type: application/json
+
+{
+  "username": "Khaleel",
+  "fullName": "Khaleel Grant",
+  "password": "abc1245"
+}
+
+
+### Step 2) Login
+POST http://microbloglite.us-east-2.elasticbeanstalk.com/auth/login
+Content-Type: application/json
+
+{
+  "username": "Khaleel",
+  "password": "abc1245"
+}
+
+
+### Step 3) GET Users
+GET  http://microbloglite.us-east-2.elasticbeanstalk.com/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IktoYWxlZWwiLCJpYXQiOjE3MTkzMzc5OTYsImV4cCI6MTcxOTQyNDM5Nn0.Pv-Pxej4N-B0EV4E9naoSn4BXfB85FhQ8nTYQcvzs1U
+
+
+### Step 4) GET One User
+GET  http://microbloglite.us-east-2.elasticbeanstalk.com/api/users/Khaleel
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IktoYWxlZWwiLCJpYXQiOjE3MTkzMzc4NDQsImV4cCI6MTcxOTQyNDI0NH0.jOZ0eyFjk1ZacRvFo7GdfLQHifcjq-IWa5EfZ4zDqRU
+
+
+### Step 5) Create a Post
+POST http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IktoYWxlZWwiLCJpYXQiOjE3MTkzMzc4NDQsImV4cCI6MTcxOTQyNDI0NH0.jOZ0eyFjk1ZacRvFo7GdfLQHifcjq-IWa5EfZ4zDqRU
+
+{
+  "text": "Hello World"
+}
+
+### Step 6) GET Posts
+GET http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IktoYWxlZWwiLCJpYXQiOjE3MTkzMzc4NDQsImV4cCI6MTcxOTQyNDI0NH0.jOZ0eyFjk1ZacRvFo7GdfLQHifcjq-IWa5EfZ4zDqRU
+# 6675a0a2fbf13c2cc0eaf6e3
+
+### Step 6B) GET Post
+GET http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts/6675a3a2fbf13c2cc0eaf78b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bGllbiIsImlhdCI6MTcxODk4MzUwMCwiZXhwIjoxNzE5MDY5OTAwfQ.CDYPBsEsqMTNMHXoyNX3vjmGq6BYRG439hAqcHcXVrs
+ 
+
+### Step 7) DELETE Post
+DELETE  http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts/6675a0a2fbf13c2cc0eaf6e3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bGllbiIsImlhdCI6MTcxODk4MzUwMCwiZXhwIjoxNzE5MDY5OTAwfQ.CDYPBsEsqMTNMHXoyNX3vjmGq6BYRG439hAqcHcXVrs
+
+### Step 8) Update User
+PUT  http://microbloglite.us-east-2.elasticbeanstalk.com/api/users/julien
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bGllbiIsImlhdCI6MTcxODk4MzUwMCwiZXhwIjoxNzE5MDY5OTAwfQ.CDYPBsEsqMTNMHXoyNX3vjmGq6BYRG439hAqcHcXVrs
+
+{
+  "fullName": "Khaleel G",
+  "bio": "Hello World"
+}
+### Step 9) Add Like
+POST  http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bGllbiIsImlhdCI6MTcxODk4MzUwMCwiZXhwIjoxNzE5MDY5OTAwfQ.CDYPBsEsqMTNMHXoyNX3vjmGq6BYRG439hAqcHcXVrs
+
+{
+  "postId": "6675a3a2fbf13c2cc0eaf78b"
+}
+
+### Step 10) Delete/Remove Like
+DELETE  http://microbloglite.us-east-2.elasticbeanstalk.com/api/likes/6675a538fbf13c2cc0eaf7e4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bGllbiIsImlhdCI6MTcxODk4MzUwMCwiZXhwIjoxNzE5MDY5OTAwfQ.CDYPBsEsqMTNMHXoyNX3vjmGq6BYRG439hAqcHcXVrs
+

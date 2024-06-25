@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- External CSS framework (Pico CSS) -->
+
+
+      <!-- Run BEFORE page is finished loading (before window.onload - don't add the `defer` attribute): -->
+      <script src="auth.js"></script>
+      <script>
+        if (isLoggedIn() === true) {
+          window.location.replace("../posts/posts.html");
+        }
+      </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #262626;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .button {
+      background-color: #0095f6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .button:hover {
+      background-color: #0077cc;
+    }
+  </style>
+
+  <title>Login</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="login">
+      <label for="username">UserName</label>
+      <input type="text" id="username" name="username" minlength="2" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password">
+
+      <p>If you've forgotten your password, <a href="resetpass.html">click here to reset it</a>.</p>
+    
+
+      
+
+      <button type="button" class="button">Login</button>
+    </form>
+  </div>
+<script src="login.js"></script>
+</body>
+</html>

@@ -11,7 +11,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fafafa;
+      background-color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,7 +20,7 @@
     }
 
     .container {
-      background-color: #fff;
+      background-color: #ffffff;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -77,21 +77,21 @@
   <div class="container">
     <h1>Create an Account</h1>
     <form id="signup-form">
-      <label for="first-name">First Name</label>
-      <input type="text" id="first-name" name="first-name" minlength="2" required>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" minlength="2" required>
 
-      <label for="last-name">Last Name (optional)</label>
-      <input type="text" id="last-name" name="last-name">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName">
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" minlength="6" required>
+    
 
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" minlength="6" required>
+      <input type="text" id="password" name="password" minlength="6" required>
 
-      <button type="submit" class="button">Sign Up</button>
+      <button id="regButton" type="submit" class="button">Sign Up</button>
     </form>
   </div>
 </body>
+<script src="reg.js"></script>
 </html>
 

@@ -1,37 +1,171 @@
-<!-- POSTS page -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Global CSS (CSS rules you want applied to all pages) -->
-    <link rel="stylesheet" href="../global.css" />
+  <!-- Global CSS (CSS rules you want applied to all pages) -->
+  <link rel="stylesheet" href="../global.css" />
 
-    <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="posts.css" />
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="posts.css" />
 
-    <title>/POSTS</title>
+  <title>/POSTS</title>
 
-    <!-- Run BEFORE page is finished loading (before window.onload): -->
-    <script src="../account/auth.js"></script>
-    <script>
-      if (isLoggedIn() === false) {
-        window.location.replace("../account/login.html");
+  <!-- Run BEFORE page is finished loading (before window.onload): -->
+  <script src="../account/auth.js"></script>
+  <script>
+    // Check if user is logged in, redirect to login page if not
+    if (!isLoggedIn()) {
+      window.location.replace("../account/login.html");
+    }
+  </script>
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+<body>
+  <!-- main content starts -->
+  <main class="main-content">
+    <header>
+      <h1>Explore</h1>
+    </header>
+
+    <!-- feed starts -->
+    <div class="feed" id="tweetFeed">
+      <!-- tweetbox starts -->
+      <div class="tweetBox">
+        <form>
+          <div class="tweetbox__input">
+            <img src="images/wp4276308.jpg" alt="" />
+            <input type="text" id="tweetContent" placeholder="What's happening?" />
+          </div>
+          <button type="button" id="postButton" class="tweetBox__tweetButton">Tweet</button>
+        </form>
+      </div>
+      <!-- tweetbox ends -->
+    </div>
+    <!-- feed ends -->
+
+    <!-- widgets starts -->
+    <div class="widgets">
+      <div class="widgets__input">
+        <span class="material-icons widgets__searchIcon"> search </span>
+        <input type="text" placeholder="Search Twitter" />
+      </div>
+
+      <div class="widgets__widgetContainer">
+        <h2>What's happening?</h2>
+        <p>Finish ur tweet to explore content</p>
+        <!-- Placeholder for widget content -->
+      </div>
+    </div>
+    <!-- widgets ends -->
+  </main>  <div class="post__body">
+    <div class="post__header">
+      <div class="post__headerText">
+        <h3>
+          anonymous
+          <span class="post__headerSpecial"
+            ><span class="material-icons post__badge"> verified </span>@Clark</span
+          >
+        </h3>
+      </div>
+      <div class="post__headerDescription">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+    </div>
+    <img src="posts/images/f4291f3e82f84c33a5997f801e8fb24f.jpg" alt="" />
+    <div class="post__footer">
+      
+    </div>
+  </div>
+</div>
+<!-- post ends -->
+
+
+    <img src="posts/Person-icon-Graphics-43204353-1.jpg" alt="" />
+  </div>
+
+  <div class="post__body">
+    <div class="post__header">
+      <div class="post__headerText">
+        <h3>
+          KhaleelG
+          <span class="post__headerSpecial"
+            ><span class="material-icons post__badge"> verified </span>@Khaleel</span
+          >
+        </h3>
+      </div>
+      <div class="post__headerDescription">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+    </div>
+    <img src="images/wp4276308.jpg" alt="" />
+    <div class="post__footer">
+  
+    </div>
+  <!-- main content ends -->
+
+
+  <!-- Page-specific JavaScript -->
+  <script>
+    /* Posts Page JavaScript */
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const postButton = document.getElementById("postButton");
+      const tweetContent = document.getElementById("tweetContent");
+      const tweetFeed = document.getElementById("tweetFeed");
+
+      postButton.addEventListener("click", function() {
+        const content = tweetContent.value.trim();
+        if (content === "") {
+          alert("upload images or explore");
+          return;
+        }
+
+        const tweet = createTweet(content);
+        tweetFeed.insertBefore(tweet, tweetFeed.firstChild);
+
+        // Clear the textarea after posting
+        tweetContent.value = "";
+      });
+
+      function createTweet(content) {
+        const tweetElement = document.createElement("div");
+        tweetElement.classList.add("tweet");
+
+        const tweetText = document.createElement("p");
+        tweetText.textContent = content;
+
+        const actions = document.createElement("div");
+        actions.classList.add("actions");
+        
+        const likeButton = document.createElement("button");
+        likeButton.textContent = "Like";
+        likeButton.addEventListener("click", function() {
+          alert("You liked this tweet!");
+        });
+
+        const retweetButton = document.createElement("button");
+        retweetButton.textContent = "Retweet";
+        retweetButton.addEventListener("click", function() {
+          alert("You retweeted this tweet!");
+        });
+
+        actions.appendChild(likeButton);
+        actions.appendChild(retweetButton);
+
+        tweetElement.appendChild(tweetText);
+        tweetElement.appendChild(actions);
+
+        return tweetElement;
       }
-    </script>
-  </head>
-  <body>
-    <header></header>
-
-    <main>
-      <h1>Posts</h1>
-    </main>
-
-    <footer></footer>
-
-    <!-- Page-specific code -->
-    <script src="posts.js"></script>
-  </body>
+    });
+  </script>
+</body>
 </html>

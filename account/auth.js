@@ -76,5 +76,6 @@ function logout() {
 
       window.localStorage.removeItem("login-data"); // remove login data from LocalStorage
       window.location.assign("/"); // redirect back to landing page
+      
     });
 }

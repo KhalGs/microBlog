@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
   postButton.addEventListener("click", function() {
     const content = tweetContent.value.trim();
     if (content === "") {
-      alert("hello .");
+      alert("Upload or tweet first");
       return;
     }
 
@@ -51,6 +51,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
     return tweetElement;
     
+  } 
+
+  function getPosts() {
+    const loginData = getLoginData();
+  
+    const options = {
+      method: "GET",
+      headers: {
+ 
+        Authorization: `Bearer ${loginData.token}`,
+      },
+    };
+  
+    fetch(apiBaseURL + "/api/posts", options)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data) 
+        
+
+
+
+      })
+      
+ 
   }
+ getPosts()
 });
 

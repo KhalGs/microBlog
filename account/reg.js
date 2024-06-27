@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log("Success:", data);
                 // Handle success scenario here (e.g., show a success message)
                 alert("Registration successful!");
-                form.reset(); // Clear the form after successful registration
+                window.location.assign("login.html");
             })
             .catch(error => {
                 console.error("Error:", error);

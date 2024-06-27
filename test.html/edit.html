@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <!-- Bootstrap CSS for styling (optional) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical; /* Allow vertical resizing of textarea */
+      min-height: 100px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Profile</h1>
+    <form id="editProfileForm">
+      <div class="form-group">
+        <label for="fullName">Update Full Name</label>
+        <input type="text" id="fullName" name="fullName" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Update Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="bio">Change Bio</label>
+        <textarea id="bio" name="bio" placeholder="Tell us something about yourself..."></textarea>
+      </div>
+      <div class="form-group">
+        <button type="button" class="edit-button" onclick="saveChanges()">Save Changes</button>
+        <button type="button" class="edit-button" onclick="cancelChanges()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></script>
+
+  <!-- Custom JavaScript for API simulation -->
+  <script>
+    function saveChanges() {
+      window.location.href = "profile.html";
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const bio = document.getElementById('bio').value;
+
+      // Simulating an API request
+      simulateAPIRequest(fullName, email, bio);
+    }
+
+    function simulateAPIRequest(fullName, email, bio) {
+      // Simulate an asynchronous API request (for demonstration)
+      console.log('Simulating API request...');
+      setTimeout(() => {
+        console.log('API Response received.');
+        console.log('Data sent:');
+        console.log('Full Name:', fullName);
+        console.log('Email:', email);
+        console.log('Bio:', bio);
+
+        // Redirect to profile page after saving
+        window.location.href = 'profile.html'; // Replace with your actual profile page URL
+      }, 1000); // Simulate 1 second delay (can be adjusted or removed)
+    }
+
+    function cancelChanges() {
+      // Example: Redirect to another page (e.g., profile page)
+      window.location.href = "profile.html";
+    }
+  </script>
+</body>
+</html>

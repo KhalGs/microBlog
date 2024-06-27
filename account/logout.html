@@ -50,8 +50,11 @@
     <h1>Logout</h1>
     <p>Are you sure you want to logout?</p>
     <button onclick="logout()">Logout</button>
+    <button onclick="Back()">Back</button>
   </div>
 
+
+  
   <script>
     function logout() {
       // Perform logout actions here (e.g., clear session, redirect to login page)
@@ -61,6 +64,13 @@
       // Redirect to login page
       window.location.href = "http://127.0.0.1:5500/account/login.html"; // Replace with your actual login page URL
     }
+
+    function Back() {
+    
+      // Redirect to login page
+      window.location.href = "http://127.0.0.1:5500/posts/posts.html"; // Replace with your actual login page URL
+    }
+
   </script>
 </body>
 </html>

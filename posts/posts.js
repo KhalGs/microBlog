@@ -1,29 +1,34 @@
 "use strict";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlbnplbDIuMCIsImlhdCI6MTcxOTI1Nzk5MCwiZXhwIjoxNzE5MzQ0MzkwfQ.1UVsVYDv9TVjSf4L5lYpfDnL_LTEp4YcgR1pSo8s918";
+const loginData = getLoginData(); // Assuming getLoginData() retrieves login information
 
 document.addEventListener("DOMContentLoaded", function () {
-  const postsContainer = document.getElementById("postsContainer");
-  const logoutButton = document.getElementById("logoutButton");
+  const postButton = document.getElementById("postButton");
+  const tweetContent = document.getElementById("tweetContent");
+  const postsContainer = document.getElementById("postsContainer"); // Assuming this element exists in your HTML
 
-  logoutButton.addEventListener("click", function () {
-    logout();
-  });
+  postButton.addEventListener("click", function () {
+    const content = tweetContent.value.trim();
+    if (content === "") {
+      alert("Please enter your tweet content.");
+      return;
+    }
 
-  fetch(`${apiBaseURL}/api/posts`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
+    fetch(`${apiBaseURL}/api/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${loginData.token}`,
+      },
+      body: JSON.stringify({ text: content }), // Assuming 'text' is the field for tweet content
     })
-    .then((posts) => {
-      posts.forEach((post) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((post) => {
         const postElement = document.createElement("div");
         postElement.className = "post";
         postElement.innerHTML = `
@@ -38,60 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         `;
         postsContainer.appendChild(postElement);
+      })
+      .catch((error) => {
+        console.error("Error posting or fetching posts:", error);
+        alert("Tweet Sucessfully Uploaded");
       });
-    })
-    .catch((error) => {
-      console.error("Error fetching posts:", error);
-    });
-});
-document.addEventListener("DOMContentLoaded", function() {
-  const postButton = document.getElementById("postButton");
-  const tweetContent = document.getElementById("tweetContent");
-  const tweetFeed = document.getElementById("tweetFeed");
-
-  postButton.addEventListener("click", function() {
-    const content = tweetContent.value.trim();
-    if (content === "") {
-      alert("Please enter your tweet content.");
-      return;
-    }
-
-    const tweet = createTweetElement(content);
-    tweetFeed.insertBefore(tweet, tweetFeed.firstChild);
 
     // Clear the textarea after posting
     tweetContent.value = "";
   });
-
-  function createTweetElement(content) {
-    const tweetElement = document.createElement("div");
-    tweetElement.classList.add("tweet");
-
-    const tweetText = document.createElement("p");
-    tweetText.textContent = content;
-
-    const actions = document.createElement("div");
-    actions.classList.add("actions");
-
-    const likeButton = document.createElement("button");
-    likeButton.textContent = "Like";
-    likeButton.addEventListener("click", function() {
-      alert("You liked this tweet!");
-    });
-
-    const retweetButton = document.createElement("button");
-    retweetButton.textContent = "Retweet";
-    retweetButton.addEventListener("click", function() {
-      alert("You retweeted this tweet!");
-    });
-
-    actions.appendChild(likeButton);
-    actions.appendChild(retweetButton);
-
-    tweetElement.appendChild(tweetText);
-    tweetElement.appendChild(actions);
-
-    return tweetElement;
-  }
 });
 

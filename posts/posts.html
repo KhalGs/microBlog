@@ -84,7 +84,8 @@
         </li>
         <li class="nav-item">
        
-          <a href="../account/logout.html" class="nav-link">Logout</a>
+          
+          <a id="logoutButton" href= "../account/logout.html" class="nav-link">Logout</a>
         </li>
       </ul>
     </nav>
@@ -239,12 +240,7 @@
     <link rel="stylesheet" href="posts.css" />
     <title>Home - Network media</title>
     <!-- Run BEFORE page is finished loading (before window.onload): -->
-    <script src="../account/auth.js"></script>
-    <script>
-      if (!isLoggedIn()) {
-        window.location.replace("../account/login.html");
-      }
-    </script>
+
     <style>
       /* Global Styles */
       body {
@@ -399,12 +395,9 @@
 
   
 
-<script src="../account/auth.js"></script>
-<script>
-  if (!isLoggedIn()){
-      window.location.replace("../microblog/login.html")
-  }
-</script>
+
+
+
 
 </head>
 
